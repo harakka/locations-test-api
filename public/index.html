@@ -1,23 +1,28 @@
-<h>Hello world myös staattisista fileistä</h>
-<ul></ul>
-<script>
-  let ul = document.querySelector("ul");
-  const updateUI = (locations) => {
-    let liArray = locations.map(
-      (location) =>
-        `<li>${location.id}: ${location.latitude}, ${location.longitude}</li>`
-    );
-    let mj = liArray.join("\n");
-    console.log(mj);
-    ul.innerHTML = mj;
-  };
-
-  const main = async () => {
-    let hr = await fetch("/api/locations");
-    let locations = await hr.json();
-    console.log(locations);
-    updateUI(locations);
-  };
-
-  main();
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>HTML5 Page</title>
+  </head>
+  <body>
+    <h1>Frontend</h1>
+    <ul></ul>
+    <script>
+      let ul = document.querySelector("ul");
+      const updateUI = (locations) => {
+        let liArray = locations.map(
+          (location) => `<li>${location.latitude} - ${location.longitude}</li>`
+        );
+        let mj = liArray.join("\n");
+        console.log(mj);
+        ul.innerHTML = mj;
+      };
+      const main = async () => {
+        let hr = await fetch("api/locations");
+        let customers = await hr.json();
+        updateUI(customers);
+      };
+      main();
+    </script>
+  </body>
+</html>
