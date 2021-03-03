@@ -1,6 +1,7 @@
 <h>Hello world myös staattisista fileistä</h>
 <ul></ul>
 <script>
+  const port = process.env.PORT || 8080;
   let ul = document.querySelector("ul");
   const updateUI = (locations) => {
     let liArray = locations.map(
@@ -13,7 +14,7 @@
   };
 
   const main = async () => {
-    let hr = await fetch("http://localhost:8080/api/locations");
+    let hr = await fetch(`http://localhost:${port}/api/locations`);
     let locations = await hr.json();
     console.log(locations);
     updateUI(locations);
